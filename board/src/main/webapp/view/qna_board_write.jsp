@@ -7,7 +7,8 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
       <h3 class="box-title">Board Write</h3>
     </div>
     <div style="height:20px"></div>
-    <form action="/qWrite.do" method="post" role="form" id="writeForm">
+    <%-- enctype : multipart/form-data --%>
+    <form action="/qWrite.do" method="post" role="form" id="writeForm" enctype="multipart/form-data">
       <div class="box-body">
         <div class="form-group row">
           <label for="name" class="col-sm-2 col-form-label">작성자</label>
@@ -18,8 +19,7 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
               id="name"
               size="10"
               class="form-control"
-              maxlength="10"
-              required="required"
+              maxlength="10"              
             />
           </div>
         </div>
@@ -32,8 +32,7 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
               id="title"
               size="50"
               class="form-control"
-              maxlength="100"
-              required="required"
+              maxlength="100"             
             />
           </div>
         </div>
@@ -45,8 +44,7 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
               id="content"
               cols="60"
               class="form-control"
-              rows="15"
-              required="required"
+              rows="15"      
             ></textarea>
           </div>
         </div>
@@ -59,8 +57,7 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
               id="password"
               class="form-control"
               size="10"
-              maxlength="10"
-              required="required"
+              maxlength="10"              
             />
           </div>
         </div>
@@ -86,4 +83,17 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
   <!-- /.box -->
 </section>
 <script src="/js/write.js"></script>
+<%-- write form validate --%>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+<script src="/js/write_validate.js"></script>
 <%@include file="../include/footer.jsp"%>
+
+
+
+
+
+
+
+
+

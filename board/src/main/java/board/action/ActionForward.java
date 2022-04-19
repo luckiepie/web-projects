@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ActionForward {
-	// path, 이동방식
+	//path,이동방식
 	private String path;
-	private boolean redirect;	// ture:sendRedirect	false : forward
-	
-	
+	private boolean redirect; //true(sendRedirect), false(forward)
 }
