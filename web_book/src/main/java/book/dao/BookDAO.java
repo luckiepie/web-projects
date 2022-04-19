@@ -121,6 +121,50 @@ public class BookDAO {
 		
 		return flag;
 	}
+	
+	// 검색
+	// select * from booktbl where code = 1001
+	// select * from booktbl where writer like '%길동%'
+	public List<BookDTO> searchList(String criteria, String keyword) {
+		List<BookDTO> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			if(criteria.equals("code")) {
+				sql = "select * from booktbl where code = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(keyword));
+			} else if(criteria.equals("keyword")) {
+				sql = "select * from booktbl where writer like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+			}
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BookDTO dto = new BookDTO();
+				dto.setCode(rs.getInt("code"));
+				dto.setTitle(rs.getString("title"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setPrice(rs.getInt("price"));
+				
+				list.add(dto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	
+	
 }
 
 
