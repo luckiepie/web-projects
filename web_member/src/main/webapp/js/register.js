@@ -10,6 +10,15 @@ $(function () {
       userid: {
         required: true,
         validId: true,
+		remote : {	// ajax 코드를 불러냄
+			url : 'checkId.jsp',
+			type : 'post',
+			data : {
+				userid:function() {
+					return $("#userid").val();
+				}
+			}
+		}
       },
       password: {
         required: true,
@@ -36,6 +45,7 @@ $(function () {
     messages: {
       userid: {
         required: "아이디는 필수 입력 요소입니다.",
+		remote : "아이디는 사용 중입니다."
       },
       password: {
         required: "비밀번호는 필수 입력 요소입니다.",
